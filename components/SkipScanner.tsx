@@ -6,29 +6,6 @@ import * as tf from '@tensorflow/tfjs-core';
 import '@tensorflow/tfjs-backend-webgl';
 // import '@tensorflow/tfjs-backend-wasm';
 
-const CounterComponent = ({ incomingValue }) => {
-    const [counter, setCounter] = useState(0);  // Counter state
-    const [prevValue, setPrevValue] = useState(null);  // Previous value state
-
-    useEffect(() => {
-        if (prevValue !== null) {
-            const difference = Math.abs(incomingValue - prevValue);  // Calculate difference
-
-            if (difference >= 50) {  // Check if difference is 50 or more
-                setCounter((prevCounter) => prevCounter + 1);  // Increment counter
-            }
-        }
-        setPrevValue(incomingValue);  // Update previous value
-
-    }, [incomingValue]);  // Dependency on incomingValue changes
-
-    return (
-        <div>
-            <h2>Counter: {counter}</h2>
-        </div>
-    );
-};
-
 
 const SkipScanner = () => {
     const videoRef = useRef(null);
