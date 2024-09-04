@@ -12,8 +12,6 @@ const SkipScanner = () => {
     const canvasRef = useRef(null);
     const detectorRef = useRef<any>(null);
     const [jumpCount, setJumpCount] = useState(0); // State to keep track of jump count
-    // const [prevY, setPrevY] = useState<number | null>(0);
-    // const [values, setValues] = useState<number[]>([]);
     const [isUp, setIsUp] = useState(false);
     const [isReady, setIsReady] = useState(false);
     const isUpRef = useRef(isUp);
