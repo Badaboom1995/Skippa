@@ -26,7 +26,7 @@ const SkipScanner = () => {
     };
 
     const setupCamera = async () => {
-        const video = videoRef.current;
+        const video: any = videoRef.current;
         const stream = await navigator.mediaDevices.getUserMedia({
             video: { width: 640, height: 480 }
         });
@@ -42,20 +42,20 @@ const SkipScanner = () => {
     };
 
     const detectPose = async () => {
-        const video = videoRef.current;
-        const canvas = canvasRef.current;
+        const video: any = videoRef.current;
+        const canvas: any = canvasRef.current;
         const ctx = canvas.getContext('2d');
 
         if (detectorRef.current && video.readyState === 4) {
-            const poses = await detectorRef.current.estimatePoses(video);
+            const poses: any = await detectorRef.current.estimatePoses(video);
 
             // Clear canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
             // Draw keypoints
-            poses.forEach((pose) => {
-                pose.keypoints.forEach((keypoint, index) => {
+            poses.forEach((pose: any) => {
+                pose.keypoints.forEach((keypoint: any, index: any) => {
                     // console.log(keypoint.x, keypoint.y, keypoint.name)
                     if (keypoint.score > 0.5) {
                         ctx.beginPath();
@@ -69,8 +69,8 @@ const SkipScanner = () => {
                         ctx.fill();
                     }
                 });
-                const left = pose.keypoints.find(point => point.name === 'left_hip');
-                const right = pose.keypoints.find(point => point.name === 'right_hip');
+                const left = pose.keypoints.find((point: any) => point.name === 'left_hip');
+                const right = pose.keypoints.find((point: any) => point.name === 'right_hip');
                 if (left.score > 0.5 && right.score > 0.5) {
                     const avgAnkleY = (left.y + right.y) / 2; // Average y position of both ankles
                     console.log('hips:',avgAnkleY)
