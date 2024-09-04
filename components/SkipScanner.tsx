@@ -107,14 +107,14 @@ const SkipScanner = () => {
     }, [jumpCount, isUp]);
 
     return (
-        <div>
-            <h1>{isUp ? 'FLY!' : "Stay"}</h1>
-            <h1>Pose Detection with Jump Detection</h1>
-            <p style={{fontSize: '128px'}}>Jumps detected: {jumpCount}</p>
-            <button onClick={detectPose}>add</button>
-            <div>
-                <video ref={videoRef} style={{display: "none"}} autoPlay playsInline width="640" height="480"></video>
-                <canvas ref={canvasRef} width="640" height="480" className='border border-black'></canvas>
+        <div className='relative w-full h-[100vh] overflow-hidden'>
+            <div className='relative z-10'>
+                <h1>{isUp ? 'FLY!' : "Stay"}</h1>
+                <p>{jumpCount}</p>
+            </div>
+            <div className='absolute left-1/2 -translate-x-1/2'>
+                <video ref={videoRef} style={{display: "none"}} autoPlay playsInline></video>
+                <canvas ref={canvasRef} width="640" height="480" className='border border-black h-[100vh]'></canvas>
             </div>
         </div>
     );
